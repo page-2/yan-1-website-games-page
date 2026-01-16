@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "folder": "gl1.html",
+    "archive_image_url": "https://archive.org/details/sides_202512",
+    "details": "Classic arcade style game with retro graphics."
+  },
+  {
+    "id": "2",
+    "folder": "game-two",
+    "archive_image_url": "https://archive.org/details/retro_pack",
+    "details": "A collection of retro console games."
+  },
+  {
+    "id": "3",
+    "folder": "game-three",
+    "archive_image_url": "https://archive.org/details/old_pc_games",
+    "details": "Old PC games preserved for browsers."
+  },
+  {
+    "id": "4",
+    "folder": "game-four",
+    "archive_image_url": "https://archive.org/details/classic_flash_games",
+    "details": "Classic Flash games archive."
+  }
+]
