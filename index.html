@@ -16,6 +16,10 @@ body{
 h1{
   text-align:center;
   padding:20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .grid{
@@ -70,12 +74,38 @@ button{
   cursor:pointer;
   font-size:18px;
 }
+
+.fullscreen-icon {
+  cursor: pointer;
+  font-size: 18px;
+  color: #38bdf8;
+}
+
+.home-link {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1000;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #fff;
+}
 </style>
 </head>
 
 <body>
+  <a href="https://yan-shun-081.github.io/yan-1-website.com/" class="home-link">🏠</a>
 
-<h1>📂 Archive Collection</h1>
+<h1>🎮 GameVault</h1>
 <div class="grid" id="grid"></div>
 
 <script>
@@ -110,6 +140,54 @@ function shareItem(folder, id){
   }
 }
 
+// Open fullscreen embed
+function openFullscreen(embedUrl) {
+  // Create overlay
+  const overlay = document.createElement('div');
+  overlay.style.position = 'fixed';
+  overlay.style.top = '0';
+  overlay.style.left = '0';
+  overlay.style.width = '100%';
+  overlay.style.height = '100%';
+  overlay.style.backgroundColor = '#000';
+  overlay.style.zIndex = '9999';
+  overlay.style.display = 'flex';
+  overlay.style.alignItems = 'center';
+  overlay.style.justifyContent = 'center';
+
+  // Create iframe
+  const iframe = document.createElement('iframe');
+  iframe.src = embedUrl;
+  iframe.style.width = '100%';
+  iframe.style.height = '100%';
+  iframe.style.border = 'none';
+  iframe.allowFullscreen = true;
+
+  // Create close button
+  const closeBtn = document.createElement('button');
+  closeBtn.innerText = '✕';
+  closeBtn.style.position = 'absolute';
+  closeBtn.style.top = '20px';
+  closeBtn.style.right = '20px';
+  closeBtn.style.background = 'rgba(255, 255, 255, 0.2)';
+  closeBtn.style.color = 'white';
+  closeBtn.style.border = 'none';
+  closeBtn.style.width = '40px';
+  closeBtn.style.height = '40px';
+  closeBtn.style.borderRadius = '50%';
+  closeBtn.style.fontSize = '20px';
+  closeBtn.style.cursor = 'pointer';
+  closeBtn.style.zIndex = '10000';
+
+  closeBtn.onclick = () => {
+    document.body.removeChild(overlay);
+  };
+
+  overlay.appendChild(iframe);
+  overlay.appendChild(closeBtn);
+  document.body.appendChild(overlay);
+}
+
 // Load grid
 fetch(DATA_URL)
 .then(res => res.json())
@@ -127,8 +205,12 @@ fetch(DATA_URL)
       <div class="details">ID: ${item.id}</div>
       <div class="actions">
         <button onclick="openFolder('${item.folder}')">Play</button>
-        <span class="share"
-          onclick="shareItem('${item.folder}','${item.id}')">ᯓ➤</span>
+        <div>
+          <span class="fullscreen-icon" 
+                onclick="openFullscreen('${toEmbed(item.archive_image_url)}')">⛶</span>
+          <span class="share"
+                onclick="shareItem('${item.folder}','${item.id}')">ᯓ➤</span>
+        </div>
       </div>
     `;
     grid.appendChild(card);
