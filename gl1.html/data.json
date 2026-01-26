@@ -34,7 +34,7 @@
     "folder": "06-Tower-Blocks",
     "archive_image_url": "https://dn710209.ca.archive.org/0/items/1.-mapora-website/3.image3.jpeg",
     "details": "Retro collection"
-  }'
+  },
   {
     "id": "7",
     "folder": "07-Ping-Pong-Game",
@@ -60,7 +60,7 @@
     "details": "Retro collection"
   },
   {
-    "id": "11,
+    "id": "11",
     "folder": "11-Rock-Paper-Scissors",
     "archive_image_url": "https://ia802805.us.archive.org/28/items/1.-mapora-website/2.image2.jpeg",
     "details": "Classic arcade game"
@@ -178,5 +178,5 @@
     "folder": "30-Simon-Says-Game",
     "archive_image_url": "https://dn710209.ca.archive.org/0/items/1.-mapora-website/3.image3.jpeg",
     "details": "Retro collection"
-  },
+  }
 ]
