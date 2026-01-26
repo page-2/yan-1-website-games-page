@@ -8,19 +8,19 @@
   },
   {
     "id": "2",
-    "folder": "page1.html",
+    "folder": "gl2.html",
     "archive_image_url": "https://archive.org/details/retro_pack",
     "details": "A collection of retro console games."
   },
   {
     "id": "3",
-    "folder": "game-three",
+    "folder": "gl3.html",
     "archive_image_url": "https://archive.org/details/old_pc_games",
     "details": "Old PC games preserved for browsers."
   },
   {
     "id": "4",
-    "folder": "game-four",
+    "folder": "gl4.html",
     "archive_image_url": "https://archive.org/details/classic_flash_games",
     "details": "Classic Flash games archive."
   }
