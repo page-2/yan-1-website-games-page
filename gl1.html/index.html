@@ -36,9 +36,10 @@ h1{
   box-shadow:0 6px 20px rgba(0,0,0,.4);
 }
 
-iframe{
+.card img {
   width:100%;
   height:160px;
+  object-fit: cover;
   border-radius:8px;
   border:none;
 }
@@ -133,11 +134,6 @@ button{
 const DATA_URL = "data.json";
 const BASE_GAME_PAGE = "https://page-2.github.io/yan-1-website-games-page/gl1.html";
 
-// Convert archive link to embed
-function toEmbed(url){
-  return url.replace("/details/", "/embed/");
-}
-
 // Open folder
 function openFolder(folder){
   window.location.href = folder + "/";
@@ -156,8 +152,8 @@ function shareItem(folder, id){
   }
 }
 
-// Open fullscreen embed
-function openFullscreen(embedUrl) {
+// Open fullscreen embed (now opens image in fullscreen modal)
+function openFullscreen(imageUrl) {
   // Create container for fullscreen element
   const container = document.createElement('div');
   container.style.position = 'fixed';
@@ -171,13 +167,12 @@ function openFullscreen(embedUrl) {
   container.style.alignItems = 'center';
   container.style.justifyContent = 'center';
 
-  // Create iframe
-  const iframe = document.createElement('iframe');
-  iframe.src = embedUrl;
-  iframe.style.width = '100%';
-  iframe.style.height = '100%';
-  iframe.style.border = 'none';
-  iframe.allowFullscreen = true;
+  // Create image element
+  const img = document.createElement('img');
+  img.src = imageUrl;
+  img.style.maxWidth = '90vw';
+  img.style.maxHeight = '90vh';
+  img.style.borderRadius = '8px';
 
   // Create close button
   const closeBtn = document.createElement('button');
@@ -199,7 +194,7 @@ function openFullscreen(embedUrl) {
     document.body.removeChild(container);
   };
 
-  container.appendChild(iframe);
+  container.appendChild(img);
   container.appendChild(closeBtn);
   document.body.appendChild(container);
 }
@@ -216,14 +211,14 @@ fetch(DATA_URL)
     card.id = "item-"+item.id;
 
     card.innerHTML = `
-      <iframe src="${toEmbed(item.archive_image_url)}"></iframe>
+      <img src="${item.archive_image_url}" alt="${item.folder}">
       <div class="title">${item.folder}</div>
       <div class="details">${item.details}</div>
       <div class="details">ID: ${item.id}</div>
       <div class="actions">
         <button onclick="openFolder('${item.folder}')">Play</button>
         <div>
-          <span class="fullscreen-icon" onclick="openFullscreen('${toEmbed(item.archive_image_url)}')">⛶</span>
+          <span class="fullscreen-icon" onclick="openFullscreen('${item.archive_image_url}')">⛶</span>
           <span class="share" onclick="shareItem('${item.folder}','${item.id}')">ᯓ➤</span>
         </div>
       </div>
