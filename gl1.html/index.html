@@ -217,7 +217,7 @@ fetch(DATA_URL)
     card.id = "item-"+item.id;
 
     card.innerHTML = `
-      <img src="${item.archive_image_url}" alt="${item.folder}">
+      <img src="${item.archive_image_url}" alt="${item.folder}" loading="lazy">
       <div class="title">${item.folder}</div>
       <div class="details">${item.details}</div>
       <div class="details">ID: ${item.id}</div>
