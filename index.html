@@ -22,6 +22,14 @@ h1{
   gap: 10px;
 }
 
+.highlight {
+  text-align: center;
+  font-size: 18px;
+  color: #10b981;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));
@@ -138,6 +146,13 @@ button{
   color: #fff;
 }
 
+.footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  color: #94a3b8;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .grid {
@@ -152,8 +167,11 @@ button{
   <a href="https://yan-shun-081.github.io/yan-1-website.com/" class="home-link">🏠</a>
   <a href="javascript:history.back()" class="back-link">←</a>
 
-<h1>🎮 GameVault</h1>
-<div class="grid" id="grid"></div>
+  <h1>🎮 GameVault</h1>
+  <div class="highlight">“Enter. Compete. Conquer.”</div>
+  <div class="grid" id="grid"></div>
+  
+  <div class="footer">© 2026 GameVault · Built with ❤️ by YAN</div>
 
 <script>
 const DATA_URL = "data1.json";
@@ -235,6 +253,7 @@ fetch(DATA_URL)
     const img = document.createElement("img");
     img.src = item.archive_image_url;
     img.alt = item.folder;
+    img.loading = "lazy"; // Enable lazy loading
 
     const title = document.createElement("div");
     title.className = "title";
@@ -242,7 +261,7 @@ fetch(DATA_URL)
 
     const details = document.createElement("div");
     details.className = "details";
-    details.textContent = item.details;
+    details.innerHTML = item.details.replace(/\n/g, "<br>"); // Preserve line breaks
 
     const idDiv = document.createElement("div");
     idDiv.className = "details";
