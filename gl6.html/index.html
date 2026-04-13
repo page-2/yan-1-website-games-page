@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>🎮 GameVault</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #020617;
+    color: #fff;
+    overflow: hidden;
+  }
+
+  /* Header */
+  header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #020617;
+    border-bottom: 1px solid #334155;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
+
+  .home-btn {
+    position: absolute;
+    left: 15px;
+    font-size: 22px;
+    cursor: pointer;
+  }
+
+  .center-box {
+    text-align: center;
+  }
+
+  .title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .tagline {
+    font-size: 12px;
+    opacity: 0.7;
+  }
+
+  /* Iframe */
+  iframe.main-site {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 100px);
+    border: none;
+  }
+
+  /* Footer */
+  footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    padding: 8px;
+    background: #020617;
+    border-top: 1px solid #334155;
+  }
+
+  /* Popup */
+  .popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 999;
+    display: flex;
+  }
+
+  .popup iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .timer {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 18px;
+    background: rgba(0,0,0,0.6);
+    padding: 5px 10px;
+    border-radius: 6px;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 22px;
+    cursor: pointer;
+    display: none;
+  }
+
+  /* Mobile tweaks */
+  @media (max-width: 600px) {
+    .title { font-size: 16px; }
+    .tagline { font-size: 11px; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- Header -->
+<header>
+  <div class="home-btn" onclick="goHome()">🏠</div>
+
+  <div class="center-box">
+    <div class="title">🎮 GameVault</div>
+    <div class="tagline">“Enter. Compete. Conquer.”</div>
+  </div>
+</header>
+
+<!-- Main Embedded Website -->
+<iframe 
+  class="main-site"
+  src="https://www.madkidgames.com/"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+  allowfullscreen
+  referrerpolicy="no-referrer"
+  sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals allow-downloads"
+></iframe>
+
+<!-- Footer -->
+<footer>
+  © 2026 GameVault · Built with ❤️ by YAN
+</footer>
+
+<!-- Popup -->
+<div class="popup" id="popup">
+  <div class="timer" id="timer">5</div>
+  <div class="close-btn" id="closeBtn" onclick="closePopup()">✖</div>
+
+  <iframe 
+    src="page1.html"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+    allowfullscreen
+  ></iframe>
+</div>
+
+<script>
+  function goHome() {
+    window.open("https://yan-shun-081.github.io/yan-1-website.com/", "_blank");
+  }
+
+  let count = 5;
+  const timerEl = document.getElementById("timer");
+  const closeBtn = document.getElementById("closeBtn");
+
+  const countdown = setInterval(() => {
+    count--;
+    timerEl.textContent = count;
+
+    if (count === 0) {
+      clearInterval(countdown);
+      timerEl.style.display = "none";
+      closeBtn.style.display = "block";
+    }
+  }, 1000);
+
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+    document.body.style.overflow = "auto";
+  }
+</script>
+
+</body>
+</html>

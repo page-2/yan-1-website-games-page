@@ -175,7 +175,7 @@ button{
 
 <script>
 const DATA_URL = "data1.json";
-const BASE_GAME_PAGE = "https://page-2.github.io/yan-1-website-games-page/gl1.html";
+const BASE_GAME_PAGE = "https://page-2.github.io/yan-1-website-games-page/";
 
 // Open folder
 function openFolder(folder){
@@ -184,7 +184,7 @@ function openFolder(folder){
 
 // Share link
 function shareItem(folder, id){
-  const link = `${BASE_GAME_PAGE}?id=${id}`;
+  const link = `${BASE_GAME_PAGE}${folder}`;
   const text = `Check out and play ${folder} ${link}`;
 
   if(navigator.share){
